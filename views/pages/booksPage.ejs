@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+
+<ul>
+    <% for (let i = 0; i < books.length; i++) { %>
+        <%- include('../partials/book', { book: books[i] }) %>
+    <% } %>
+</ul>
+
+<%- include('../partials/footer') %>

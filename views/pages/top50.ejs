@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+
+<ul>
+    <% for (let i = 0; i < songs.length; i++) { %>
+        <%- include('../partials/song', { song: songs[i] }) %>
+    <% } %>
+</ul>
+
+<%- include('../partials/footer') %>
