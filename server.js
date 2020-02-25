@@ -65,10 +65,11 @@ app.get('/top50/popular', (req, res) => {
 //exercise 1.6 `` NOT WORKING ``
 app.get('/top50/song/:rank', (req, res) => {
     const rank = req.params.rank - 1;
-    if (top50[rank]) {    
+    const spot = top50.filter(place => place.rank == rank);
+    if (spot) {    
         res.render('pages/topArtists', {
             title: `${top50[rank].rank}`,
-            song: top50[rank]
+            song: spot
         });
     } else {
         res.status(404);
@@ -104,13 +105,13 @@ app.get('/books/:id', (req, res) => {
     }
 });
 // `` NOT WORKING ``
-app.get('/books/:type', (req, res) => {
+app.get('/booksType/:type', (req, res) => {
     const type = req.params.type;
-    const book = books.find(book => book.type == type);
-    if (book) {    
+    const booksByType = books.filter(book => book.type == type);
+    if (booksByType) {    
         res.render('pages/booksPage', {
-            title: `${book.title}`,
-            book: book
+            title: `${type}`,
+            books: booksByType
         });
     } else {
         res.status(404);
